@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="car" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watch</title>
+</head>
+<body>
+<h1>当购物车总价超过100美元时，减10美元</h1>
+    <div ng-controller="CarController">
+        <div style="margin:5px;padding: 5px;border: 1px solid #ccc" ng-repeat="item in items">
+            <span>商品名称：{{item.title}}</span>
+            商品数量：<input ng-model="item.quantity">
+            <span>商品单价：{{item.price | currency}}</span>
+            商品价格 <span>{{item.price*item.quantity | currency}}</span>
+        </div>
+        <div>总计：{{bill.totalCart | currency}}</div>
+        <div>打折：{{bill.discount | currency}}</div>
+        <div>合计：{{bill.subtotal | currency}}</div>
+    </div>
+</body>
+<script src="http://apps.bdimg.com/libs/angular.js/1.3.9/angular.min.js"></script>
+<script>
+    var app = angular.module('car',[]);
+    app.controller('CarController',function($scope){
+        $scope.bill = {};
+        $scope.items=[
+            {title:"农夫山泉",quantity:8,price:2.5},
+            {title:"雪碧",quantity:15,price:3.0},
+            {title:"青岛啤酒",quantity:20,price:3.5}
+        ];
+        var calculateTotals= function(){
+            var total = 0;
+            for(var i= 0,len = $scope.items.length;i<len;i++){
+                total = total + $scope.items[i].price*$scope.items[i].quantity;
+            }
+            $scope.bill.totalCart = total;
+            $scope.bill.discount = total > 100 ? 10 : 0;
+            $scope.bill.subtotal = total - $scope.bill.discount;
+        };
+
+        $scope.$watch('items',calculateTotals,true);
+    });
+
+</script>
+</html>
