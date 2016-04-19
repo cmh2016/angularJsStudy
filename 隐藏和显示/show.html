@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>show And hide</title>
+</head>
+<body>
+    <!--通过双向数据绑定控制显示和隐藏-->
+    checked的状态：{{checked}}
+    <input type="checkbox" ng-model="checked" ng-init="checked=true">
+    <div style="width: 200px;height: 100px;background-color: deepskyblue;color: #ffffff;margin-bottom: 100px" ng-show="checked">
+        ng-show
+    </div>
+    checkedTow的状态：{{checked}}
+    <input type="checkbox" ng-model="checkedTow" ng-init="checkedTow=true">
+    <div style="width: 200px;height: 100px;background-color: deepskyblue;color: #ffffff;" ng-if="checkedTow">
+       ng-if
+    </div>
+</body>
+<script src="http://apps.bdimg.com/libs/angular.js/1.3.9/angular.min.js"></script>
+
+</html>

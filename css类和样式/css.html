@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="CssApp" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css</title>
+    <style>
+        .error{
+            background-color: red;
+            color: white;
+        }
+        .warning{
+            background-color: yellow;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="MessageController">
+    <div ng-class="{error:isError,warning:isWarning}" ng-bind="messageText"></div>
+    <button ng-click="showError()">showError</button>
+    <button ng-click="showWarning()">showWarning</button>
+</div>
+
+</body>
+<script src="http://apps.bdimg.com/libs/angular.js/1.3.9/angular.min.js"></script>
+<script>
+    var CssAppModule = angular.module('CssApp',[]);
+
+    CssAppModule.controller('MessageController',function($scope){
+        $scope.isError = false;
+        $scope.isWarning  = false;
+
+        $scope.showError = function(){
+            $scope.messageText = "this is an error!";
+            $scope.isError = true;
+            $scope.isWarning = false;
+        };
+
+        $scope.showWarning = function(){
+            $scope.messageText = "just a warning,please carry on!";
+            $scope.isError = false;
+            $scope.isWarning = true;
+        };
+    });
+
+</script>
+</html>

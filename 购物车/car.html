@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="CarController">
+    <h1>你的订单</h1>
+    <div ng-repeat="item in items">
+        <span>{{item.title}}</span>
+        <input ng-model="item.quantity">
+        <span>{{item.price | currency}}</span>
+        <span>{{item.price * item.quantity | currency}}</span>
+        <button ng-click="remove($index)">删除</button>
+    </div>
+</body>
+<script src="http://apps.bdimg.com/libs/angular.js/1.0.4/angular.min.js"></script>
+<script src="CarController.js"></script>
+</html>

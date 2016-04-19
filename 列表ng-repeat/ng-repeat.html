@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="MyApp" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat</title>
+</head>
+<body>
+    <ul ng-controller="StudentListController">
+        <li ng-repeat="student in students">
+            <a href="./student/view/{{student.id}}">姓名：{{student.name}}</a>
+        </li>
+    </ul>
+</body>
+<script src="http://apps.bdimg.com/libs/angular.js/1.3.9/angular.min.js"></script>
+<script src="app.js"></script>
+<script src="controllers.js"></script>
+<script src="model.js"></script>
+</html>

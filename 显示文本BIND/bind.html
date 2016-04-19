@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!--全局命名空间-->
+<html ng-app="myApp" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="TextController">
+    <!-- ng-bind 好处就是加载html时候，页面不会显示{{xxx}}，直接把渲染解析后的数据放在dom里 -->
+    <p ng-bind="someText.message"></p>
+</body>
+<script src="../angular.min.js"></script>
+<script src="TextController.js"></script>
+</html>

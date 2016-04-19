@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--ng-submit 会阻止默认form提交事件-->
+<form ng-submit="requestFunding()" ng-controller="StartUpController"  action="" method="get">
+    Starting: <input ng-model="startingEstimate" ng-change="computeNeeded()" type="text">
+    Recommendation:{{needed}}
+    <button>fund my startup!</button>
+    <button ng-click="reset()">reset</button>
+</form>
+</body>
+<script src="http://apps.bdimg.com/libs/angular.js/1.0.4/angular.min.js"></script>
+<script src="formController.js"></script>
+</html>
