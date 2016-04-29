@@ -1,0 +1,9 @@
+<div><strong>标题名称：</strong>{{message.h1}}</div>
+<div><strong>邮件发送人：</strong>{{message.sender}}</div>
+<div><strong>接收时间：</strong>{{message.date}}</div>
+<div>
+    <i>To</i>
+    <span ng-repeat="recipient in message.recipients">{{recipient}}</span>
+    <div>{{message.message}}</div>
+    <a href="#/">返回信息列表</a>
+</div>
