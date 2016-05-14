@@ -2,24 +2,24 @@
  * Created by cmh on 2016/4/29.
  */
 //为核心的AMail服务创建模块
-var aMailServices = angular.module('AMail',[]);
+var aMailServices = angular.module('AMail',['ngRoute']);
 
 //在URL，模板之间建立映射关系
-function emailRouteConfing($routeProvider){
+function emailRouteConfig($routeProvider){
     $routeProvider.when('/',{
         controller:ListController,
-        templateUrl:'../view/list.html'
-    }),
+        templateUrl:'./view/list.html'
+    }).
         when('/view/:id',{
             controller:DetailController,
-            templateUrl:'../view/detail.html'
-        }),
+            templateUrl:'./view/detail.html'
+        }).
         otherwise({
             redirectTo:'/'
         });
 }
 //配置我们的路由，以便AMail服务可以找到它
-aMailServices.confing(emailRouteConfing);
+aMailServices.config(emailRouteConfig);
 //一些虚拟数据
 messages = [{
     id:0,
@@ -49,6 +49,6 @@ function ListController($scope){
     $scope.messages = messages;
 }
 //从路由信息（从url中解析出来的）中获取邮件ID，然后用它找到正确的对象
-function DetailController($scope){
-    $scope.message = messages[$routePrams.id];
+function DetailController($scope,$routeParams){
+    $scope.message = messages[$routeParams.id];
 }
